@@ -1,0 +1,33 @@
+{
+  "name": "kursikz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "nodemon server/app.ts",
+    "dev:client": "next dev",
+    "build": "next build && tsc",
+    "start": "node server/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.3",
+    "concurrently": "^9.1.2",
+    "express": "^4.21.2",
+    "next": "^15.1.4",
+    "nodemon": "^3.1.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.4"
+  }
+}
