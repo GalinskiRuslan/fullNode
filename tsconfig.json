@@ -7,17 +7,10 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "jsx": "preserve" // Указывает, что используется React 17+ с новым JSX runtime
-    ,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "jsx": "preserve", // Указывает, что используется React 17+ с новым JSX runtime
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "noEmit": true,
     "incremental": true,
@@ -25,11 +18,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "src",
-    "server"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src", "server"],
+  "exclude": ["node_modules"],
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true
 }
