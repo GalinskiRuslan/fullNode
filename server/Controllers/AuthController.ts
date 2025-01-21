@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import { generateToken } from "../utils/jwt";
 
 const prisma = new PrismaClient();
 
@@ -21,16 +22,32 @@ const hashPassword = async (password: string): Promise<string> => {
 export async function login(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).send("Invalid credentials");
+      return;
+    }
     const user = await prisma.user.findUnique({ where: { email } });
     if (user?.role !== "admin") {
       if (!user || user.password !== (await hashPassword(password))) {
-        res.status(401).send("Invalid credentials");
+        res.status(400).send("Invalid credentials");
+        return;
       }
     } else {
       if (!user || user.password !== password) {
-        res.status(401).send("Invalid credentials");
+        res.status(400).send("Неверный пароль или почта");
+        return;
       }
-      res.json(user);
+      const token = generateToken({ userId: user.id, role: user.role });
+      res.json(token);
+      return;
     }
-  } catch (error) {}
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).send({ "Error logging in": error.message });
+      return;
+    } else {
+      res.status(500).send("unknown error logging in");
+      return;
+    }
+  }
 }

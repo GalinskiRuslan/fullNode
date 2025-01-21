@@ -9,6 +9,5 @@ const prisma = new PrismaClient();
 
 router.get("/", checkAuth, getAllUsers);
 router.get("/:id", getUserById);
-router.post("/login", )
 
 export default router;
