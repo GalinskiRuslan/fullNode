@@ -10,5 +10,11 @@
     "files": [
       "static/chunks/node_modules_next_dist_pages__error_js.js"
     ]
+  },
+  "modules\\CodeEditor\\CodeEditor.tsx -> @monaco-editor/react": {
+    "id": "modules\\CodeEditor\\CodeEditor.tsx -> @monaco-editor/react",
+    "files": [
+      "static/chunks/node_modules_monaco-editor_react_dist_index_mjs.js"
+    ]
   }
 }
